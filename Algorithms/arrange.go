@@ -31,7 +31,7 @@ func Arrange_Str(step int, sum *int, array, result []string, book []int) {
 		if book[i] == 0 {
 			result[step] = array[i]
 			book[i] = 1
-			go Arrange_Str(step+1, sum, array, result, book)
+			Arrange_Str(step+1, sum, array, result, book)
 			book[i] = 0
 		}
 	}
