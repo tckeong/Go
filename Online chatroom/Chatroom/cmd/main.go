@@ -89,7 +89,7 @@ func (router Router) setup() {
 		c.HTML(http.StatusUnauthorized, "login_fail.html", nil)
 	})
 	router.r.POST("/login", router.login)
-	router.r.GET("/socket", router.socket)
+	router.r.GET("/socket", router.Socket)
 }
 
 func (router Router) run() {
@@ -152,10 +152,6 @@ func DbQuery(username string) string {
 func SetCookie(c *gin.Context, username string, time int) {
 	c.SetCookie("cookie_name", username, time, "/index", GetLocalIpAddr(), false, false)
 	c.SetCookie("cookie_name", username, time, "/index", "localhost", false, false)
-}
-
-func (router Router) socket(c *gin.Context) {
-	go Socket(router, c)
 }
 
 func GetLocalIpAddr() string {
